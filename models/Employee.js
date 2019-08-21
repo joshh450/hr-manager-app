@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const EmployeeSchema = new Schema({
     id: {
         type: Number,
-        min: 6,
-        max: 6,
+        max: 999999,
+        unique: true,
         required: true
     },
     first: {
@@ -22,9 +22,8 @@ const EmployeeSchema = new Schema({
     },
     phone: {
         type: Number,
-        min: 10,
-        max: 10,
-        required: true
+        required: true,
+        max: 9999999999,
     },
     date: {
         type: Date,
