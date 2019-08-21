@@ -23,4 +23,24 @@ router.post('/',  async (req, res) => {
     }
 })
 
+router.patch('/:id',  async (req, res) => {
+    try {
+        await Employee.findByIdAndUpdate(req.params.id, req.body);
+        await Employee.save()
+        res.send(employee)
+    } catch (err) {
+        res.status(500).send(err)
+    }
+})
+
+router.delete('/:id',  async (req, res) => {
+    try {
+        const employee = await Employee.findByIdAndDelete(req.params.id)
+        if(!employee) res.status(404).send("No employee found")
+        res.status(200).send()
+    } catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 module.exports = router;
