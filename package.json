@@ -1,0 +1,23 @@
+{
+  "name": "hr-manager",
+  "version": "1.0.0",
+  "description": "hr manager app to create and display employee lists, update information and delete employees when they leave",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "author": "Joshua Hougaard <joshh450@yahoo.com> (https://www.npmjs.com/~joshh450)",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.2.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "mongoose": "^5.6.10",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.1"
+  }
+}
