@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const CreateEmployee = props => {
     return (
@@ -7,10 +6,6 @@ const CreateEmployee = props => {
             Create
         </div>
     )
-}
-
-CreateEmployee.propTypes = {
-
 }
 
 export default CreateEmployee
