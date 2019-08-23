@@ -1,4 +1,4 @@
-import { GET_EMPLOYEES, EMPLOYEES_ERROR } from '../actions/types'
+import { GET_EMPLOYEES, EMPLOYEES_ERROR, DELETE_EMPLOYEE } from '../actions/types'
 
 const initialState = {
     employees: [],
@@ -17,6 +17,12 @@ export default function(state=initialState, action) {
             employees: payload,
             loading: false
         }
+        case DELETE_EMPLOYEE:
+            return {
+                ...state,
+                employees: state.employees.filter(employee => employee._id !== payload),
+                loading: false
+            }
         case EMPLOYEES_ERROR:
             return {
             ...state,
