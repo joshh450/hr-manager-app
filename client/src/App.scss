@@ -71,6 +71,32 @@ body {
     }
 }
 
+.back-button {
+    color: $site-color-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 25px;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 460px;
+    }
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: $site-color-main;
+        text-decoration: none;
+    }
+    &__text {
+        margin: 0px;
+        padding-left: 2px;
+    }
+}
+
 .employee-list {
     height: auto;
     &__container {

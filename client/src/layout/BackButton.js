@@ -5,11 +5,11 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const BackButton = props => {
     return (
-        <div className="new-button">
-            <div className="new-button__container">
-                <Link className="new-button__link" to="/">
+        <div className="back-button">
+            <div className="back-button__container">
+                <Link className="back-button__link" to="/">
                     <FontAwesomeIcon icon={faArrowLeft}/>
-                    <h3 className="new-button__text">Back</h3>
+                    <h3 className="back-button__text">Back</h3>
                 </Link>
             </div>
         </div>

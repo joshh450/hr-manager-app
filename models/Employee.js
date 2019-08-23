@@ -8,11 +8,7 @@ const EmployeeSchema = new Schema({
         unique: true,
         required: true
     },
-    first: {
-        type: String,
-        required: true
-    },
-    last: {
+    name: {
         type: String,
         required: true
     },
