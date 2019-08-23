@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import BackButton from '../layout/BackButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faPhone, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
 const CreateEmployee = props => {
     return (
         <div className="employee-list">
-            <div className="spacer-25"></div>
+            <BackButton />
             <div className="employee-list__container">
                 <h2 className="employee-list__container__title">Create Employee</h2>
                 <div className="employee-card">

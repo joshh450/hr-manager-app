@@ -1,11 +1,12 @@
 $site-color-main: rgb(0, 152, 233);
 $site-color-gray: #797878;
+$site-font: 'Nunito', sans-serif;
 
 @mixin buttons {
     height: 35px;
     width: 120px;
     font-size: 1em;
-    font-family: 'Nunito', sans-serif;
+    font-family: $site-font;
     color: white;
     border-radius: 10px;
     border: none;
@@ -14,7 +15,7 @@ $site-color-gray: #797878;
 
 body {
     margin: 0px;
-    font-family: 'Nunito', sans-serif;
+    font-family: $site-font;
 }
 
 .spacer-25 {
@@ -132,4 +133,13 @@ body {
     height: 35px;
     width: 250px;
     margin-left: 10px;
+    padding-left: 4px;
+    border: 2px solid $site-color-main;
+    border-radius: 10px;
+    font-family: $site-font;
+    color: $site-color-main;
+    font-size: 1em;
+    &:focus {
+        outline: none;
+    }
 }
