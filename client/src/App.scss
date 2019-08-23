@@ -37,6 +37,10 @@ body {
     }
 }
 
+.loading {
+    color: $site-color-main;
+}
+
 .new-button {
     color: $site-color-main;
     display: flex;
