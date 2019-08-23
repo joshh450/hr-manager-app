@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getEmployee, addEmployee } from '../actions/employee'
+import { getEmployee, editEmployee } from '../actions/employee'
 import BackButton from '../layout/BackButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faPhone, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
-const EditEmployee = ({ getEmployee, addEmployee, employee: { employee, loading }, match }) => {
-    useEffect(() => {
-        getEmployee(match.params.id)
-    }, [getEmployee])
-
-
+const EditEmployee = ({ getEmployee, editEmployee, employee: { employee, loading }, match }) => {
     const [id, setId] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+
+    useEffect(() => {
+        getEmployee(match.params.id)
+    }, [getEmployee])
+
     const onSubmit = e => {
         e.preventDefault();
-        addEmployee({ id, name, email, phone })
-        setId('')
-        setName('')
-        setEmail('')
-        setPhone('')
+        editEmployee({ id, name, email, phone })
     }
 
     return (
+        loading ? <h2 className="loading">Loading...</h2> :
         <div className="employee-list">
             <BackButton />
             <div className="employee-list__container">
@@ -45,4 +42,4 @@ const mapStateToProps = state => ({
     employee: state.employee
 })
 
-export default connect(mapStateToProps, { getEmployee, addEmployee })(EditEmployee);
+export default connect(mapStateToProps, { getEmployee, editEmployee })(EditEmployee);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EMPLOYEES, GET_EMPLOYEE, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE } from './types';
+import { GET_EMPLOYEES, GET_EMPLOYEE, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE, EDIT_EMPLOYEE } from './types';
 
 export const getEmployees = () => async dispatch => {
     try {
@@ -63,6 +63,27 @@ export const getEmployee = id => async dispatch => {
 
         dispatch({
             type: GET_EMPLOYEE,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: EMPLOYEES_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
+
+export const editEmployee = (id, formData) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.patch(`/api/employees/${id}`, formData, config)
+
+        dispatch({
+            type: EDIT_EMPLOYEE,
             payload: res.data
         })
     } catch (err) {
