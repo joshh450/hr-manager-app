@@ -16,7 +16,7 @@ const App = () =>
         <Route exact path="/" component={EmployeeList} />
         <Switch>
           <Route exact path="/create" component={CreateEmployee} />
-          <Route exact path="/edit" component={EditEmployee} />
+          <Route exact path={'/edit/:id'} component={EditEmployee} />
         </Switch>
       </Fragment>
     </Router>

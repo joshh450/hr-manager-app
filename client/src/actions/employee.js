@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EMPLOYEES, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE } from './types';
+import { GET_EMPLOYEES, GET_EMPLOYEE, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE } from './types';
 
 export const getEmployees = () => async dispatch => {
     try {
@@ -47,6 +47,22 @@ export const addEmployee = formData => async dispatch => {
 
         dispatch({
             type: ADD_EMPLOYEE,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: EMPLOYEES_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
+
+export const getEmployee = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/employees/${id}`)
+
+        dispatch({
+            type: GET_EMPLOYEE,
             payload: res.data
         })
     } catch (err) {

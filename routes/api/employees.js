@@ -12,6 +12,16 @@ router.get('/',  async (req, res) => {
     }
 })
 
+router.get('/:id',  async (req, res) => {
+    const employee = await Employee.findById(req.params.id)
+    try {
+        res.send(employee)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send(err)
+    }
+})
+
 router.post('/',  async (req, res) => {
     const newEmployee = new Employee(req.body)
     try {

@@ -1,4 +1,4 @@
-import { GET_EMPLOYEES, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE } from '../actions/types'
+import { GET_EMPLOYEES, GET_EMPLOYEE, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPLOYEE } from '../actions/types'
 
 const initialState = {
     employees: [],
@@ -13,10 +13,16 @@ export default function(state=initialState, action) {
     switch(type) {
         case GET_EMPLOYEES:
             return {
-            ...state,
-            employees: payload,
-            loading: false
+                ...state,
+                employees: payload,
+                loading: false
         }
+        case GET_EMPLOYEE:
+            return {
+                ...state,
+                employee: payload,
+                loading: false
+            }
         case ADD_EMPLOYEE:
             return {
                 ...state,
