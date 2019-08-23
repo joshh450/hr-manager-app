@@ -17,6 +17,10 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+.spacer-25 {
+    height: 25px;
+}
+
 .header {
     width: 100vw;
     height: 100px;
@@ -38,6 +42,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100vw;
+    height: 25px;
     &__container {
         display: flex;
         align-items: center;
@@ -121,4 +126,10 @@ body {
     &__delete:hover {
         cursor: pointer;
     }
+}
+
+.input-field {
+    height: 35px;
+    width: 250px;
+    margin-left: 10px;
 }
