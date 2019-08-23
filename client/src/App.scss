@@ -177,3 +177,23 @@ body {
         outline: none;
     }
 }
+
+@media (max-width: 500px) {
+    .employee-card {
+        width: 90vw;
+    }
+
+    .employee-field {
+        &__h2 {
+            font-size: 1.2em;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .employee-field {
+        &__h2 {
+            font-size: 1em;
+        }
+    }
+}
