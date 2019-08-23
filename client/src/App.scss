@@ -1,6 +1,17 @@
 $site-color-main: rgb(0, 152, 233);
 $site-color-gray: #797878;
 
+@mixin buttons {
+    height: 35px;
+    width: 120px;
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin: 0px 5px;
+}
+
 body {
     margin: 0px;
     font-family: 'Nunito', sans-serif;
@@ -25,7 +36,21 @@ body {
     color: $site-color-main;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    width: 100vw;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 460px;
+    }
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: $site-color-main;
+        text-decoration: none;
+    }
     &__text {
         margin: 0px;
         padding-left: 2px;
@@ -56,4 +81,44 @@ body {
     width: 460px;
     border: 4px solid $site-color-main;
     border-radius: 25px;
+}
+
+.employee-field {
+    height: 76px;
+    color: $site-color-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__buttons {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__h2 {
+        padding-left: 10px;
+    }
+    &__time {
+        color: $site-color-gray;
+        display: flex;
+        justify-content: center;
+        height: 20px;
+    }
+}
+
+.button {
+    &__edit {
+        @include buttons;
+        background-color: $site-color-main;
+    }
+    &__delete {
+        @include buttons;
+        background-color: red;
+    }
+    &__edit:hover {
+        cursor: pointer;
+    }
+    &__delete:hover {
+        cursor: pointer;
+    }
 }
