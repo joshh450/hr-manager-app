@@ -2,7 +2,7 @@ import { GET_EMPLOYEES, GET_EMPLOYEE, EMPLOYEES_ERROR, DELETE_EMPLOYEE, ADD_EMPL
 
 const initialState = {
     employees: [],
-    employee: null,
+    employee: {id: '', name: '', email: '', phone: ''},
     loading: true,
     error: {}
 }
@@ -15,6 +15,7 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 employees: payload,
+                employee: {id: '', name: '', email: '', phone: ''},
                 loading: false
         }
         case GET_EMPLOYEE:

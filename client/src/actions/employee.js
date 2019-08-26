@@ -79,8 +79,8 @@ export const editEmployee = (id, formData) => async dispatch => {
             'Content-type': 'application/json'
         }
     }
+    const res = await axios.patch(`/api/employees/${id}`, formData, config)
     try {
-        const res = await axios.patch(`/api/employees/${id}`, formData, config)
 
         dispatch({
             type: EDIT_EMPLOYEE,

@@ -6,18 +6,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faPhone, faIdCard } from '@fortawesome/free-solid-svg-icons'
 
 const EditEmployee = ({ getEmployee, editEmployee, employee: { employee, loading }, match }) => {
-    const [id, setId] = useState('')
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
+    const [formData, setFormData] = useState({
+        id: '',
+        name: '',
+        email: '',
+        phone: ''
+    })
 
     useEffect(() => {
         getEmployee(match.params.id)
-    }, [getEmployee])
+
+        setFormData({
+        id: loading || !employee.id ? '' : employee.id,
+        name: loading || !employee.name ? '' : employee.name,
+        email: loading || !employee.email ? '' : employee.email,
+        phone: loading || !employee.phone ? '' : employee.phone,
+    })
+    }, [match.params.id])
+
+    const {
+        id,
+        name,
+        email,
+        phone
+    } = formData;
+
+    const docId = employee._id
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = e => {
         e.preventDefault();
-        editEmployee({ id, name, email, phone })
+        editEmployee(docId, formData)
     }
 
     return (
@@ -25,13 +45,13 @@ const EditEmployee = ({ getEmployee, editEmployee, employee: { employee, loading
         <div className="employee-list">
             <BackButton />
             <div className="employee-list__container">
-                <h2 className="employee-list__container__title">Edit Employee</h2>
+                <h2 className="employee-list__container__title">Employee</h2>
                 <form className="employee-card" onSubmit={onSubmit}>
-                    <div className="employee-field"><FontAwesomeIcon icon={faUser} size="2x"/><input name="name" value={name} onChange={e => setName(e.target.value)} className="input-field" type="text" placeholder="Full Name"></input></div>
-                    <div className="employee-field"><FontAwesomeIcon icon={faEnvelope} size="2x"/><input name="email" value={email} onChange={e => setEmail(e.target.value)} className="input-field" type="email" placeholder="Email Address"></input></div>
-                    <div className="employee-field"><FontAwesomeIcon icon={faPhone} size="2x"/><input name="phone" value={phone} onChange={e => setPhone(e.target.value)} className="input-field" type="text" placeholder="Phone Number"></input></div>
-                    <div className="employee-field"><FontAwesomeIcon icon={faIdCard} size="2x"/><input name="id" value={id} onChange={e => setId(e.target.value)} className="input-field" type="text" placeholder="Employee ID"></input></div>
-                    <div className="employee-field__buttons"><button className="button__edit">Submit</button></div>
+                    <div className="employee-field"><FontAwesomeIcon icon={faUser} size="2x"/><input name="name" value={name} onChange={onChange} className="input-field" type="text" placeholder="Full Name"></input></div>
+                    <div className="employee-field"><FontAwesomeIcon icon={faEnvelope} size="2x"/><input name="email" value={email} onChange={onChange} className="input-field" type="email" placeholder="Email Address"></input></div>
+                    <div className="employee-field"><FontAwesomeIcon icon={faPhone} size="2x"/><input name="phone" value={phone} onChange={onChange} className="input-field" type="text" placeholder="Phone Number"></input></div>
+                    <div className="employee-field"><FontAwesomeIcon icon={faIdCard} size="2x"/><input name="id" value={id} onChange={onChange} className="input-field" type="text" placeholder="Employee ID"></input></div>
+                    <div className="employee-field__buttons"><button className="button__edit" type="submit">Submit</button></div>
                 </form>
             </div>
         </div>
